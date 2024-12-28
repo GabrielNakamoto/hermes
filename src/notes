@@ -1,0 +1,60 @@
+
+-   Add error handling
+
+
+Difficulty:
+
+
+    target = max target / difficulty
+
+
+Merkle root:
+
+    continously pair up transactions and hash them together
+    going from leaf nodes all the way to the 'merkle root'
+    which is a descendant from all included transactions.
+
+    If there is ever an odd number of nodes in a layer
+    you just hash the end node (farthest right visually)
+    with itself
+
+
+Cryptography Terms:
+
+    digest      ->      output of a hash function, fixed size
+    nonce
+    merkle tree / root
+
+Blocks:
+
+    First transaction included is a reward for the node mining
+    it
+
+
+Transaction:
+
+    Rerouting previous (*unspent) transaction outputs into a new
+    transaction input.
+
+    TXID (transaction identifiers)   ->      the hash of the transactions data
+
+
+    UTXO's (unspent transaction outputs)
+
+
+    Ex.     > You created a brand new wallet
+            > Alice sent you 10 coins
+            > You try to send 5 coins to Bob
+
+            What actually happens is you take the output
+            from the 10 coin transaction Alice sent to you
+            as an input to the new transaction.
+
+            This new transaction has 2 outputs, 1 to bob
+            giving him 5 coins and another back to you giving
+            yourself a new 5 coin change output you can use
+            for a future input.
+
+
+Proof of work:
+

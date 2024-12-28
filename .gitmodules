@@ -1,0 +1,6 @@
+[submodule "uint256_t"]
+	path = uint256_t
+	url = https://github.com/calccrypto/uint256_t
+[submodule "vendor/uint256_t"]
+	path = vendor/uint256_t
+	url = https://github.com/calccrypto/uint256_t
