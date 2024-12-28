@@ -5,9 +5,14 @@ namespace crypto
 {
 
 template<typename T>
-static
 T hexStringToInteger(const std::string &hex)
 {
+    // make sure there is enough room in T type
+    // for # of bytes in hex
+    //
+    //
+    // support 0x.. prefix
+    // support spaces?
     T value = 0;
 
     for (char c : hex)

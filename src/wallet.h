@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "common.h"
+#include "crypto.h"
 
 class Wallet
 {
@@ -15,8 +16,6 @@ public:
     };
 
 private:
-
-    /* static constexpr uint256_t MAX_PRIVATE_VALUE = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364140; */
 
     uint256_t privateKey;
     CompressedPubKey publicKey;
