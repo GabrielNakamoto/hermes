@@ -35,6 +35,24 @@ void Wallet::createPrivateKey()
     privateKey = randomValue;
 }
 
+void Wallet::derivePublicKey()
+{
+    // general elliptic curve formula:
+    //
+    //          y^2 = x^3 + ax + b      mod p
+    //
+
+    int a = 0;
+    int b = 7;
+
+    uint256_t p;
+    uint256_t n;
+
+    uint256_t gx;
+    uint256_t gy;
+}
+
+
 /* std::string Wallet::getPublicKey() const */
 /* { */
 /*     unsigned char buffer[33]; */

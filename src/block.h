@@ -26,7 +26,10 @@ private:
 
 public:
 
-    Block() = default;
+    Block();
+    ~Block();
+
+    bool is_valid(const std::string &hash, int32_t target) const;
 };
 
 #endif

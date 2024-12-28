@@ -12,7 +12,7 @@ public:
         // hash of the data of the transaction
         // which has an output this input is
         // trying to spend / unlock
-        uint256_t TXID;
+        uint256_t previousOutput;
         int32_t outIndex;
     };
 
@@ -29,4 +29,4 @@ private:
     int outputs;
 
 public:
-}:
+};

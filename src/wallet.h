@@ -26,6 +26,7 @@ public:
     ~Wallet();
 
     void createPrivateKey();
+    void derivePublicKey();
 
     const unsigned char *getPublicKey() const;
 };
