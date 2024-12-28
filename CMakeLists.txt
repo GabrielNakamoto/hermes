@@ -6,7 +6,7 @@ set(CXX_EXTENSIONS ON)
 
 project(hermes LANGUAGES CXX)
 
-add_executable(hermes src/main.cpp src/wallet.cpp)
+add_executable(hermes src/main.cpp src/wallet.cpp src/block.cpp)
 
 add_subdirectory(vendor/uint256_t)
 add_subdirectory(vendor/uint256_t/uint128_t)
