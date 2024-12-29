@@ -1,29 +1,38 @@
 #include <iostream>
 
+#include <secp256k1.h>
+
+#include "common.h"
+
 #include "wallet.h"
 #include "block.h"
 #include "crypto.h"
 
 int main(){
-    Block b;
 
-    int32_t target = 0x1EFFDD01;
+    Wallet w;
+    w.createPrivateKey();
+    w.derivePublicKey();
 
-    std::string input = "Gabriel Raine Nakamoto";
-    std::string hash;
-    int nonce = 0;
+    /* Block b; */
 
-    do
-    {
-        hash = crypto::hash256(input + std::to_string(nonce));
+    /* int32_t target = 0x1EFFDD01; */
 
-        std::cout << "\rNonce: " << nonce << std::flush;
+    /* std::string input = "Fwea"; */
+    /* std::string hash; */
+    /* int nonce = 0; */
 
-        ++nonce;
+    /* do */
+    /* { */
+    /*     hash = crypto::hash256(input + std::to_string(nonce)); */
 
-    } while (! b.is_valid(hash, target));
+    /*     std::cout << "\rNonce: " << nonce << std::flush; */
 
-    std::cout << "\nFinal hash: " << hash;
+    /*     ++nonce; */
 
-    return 0;
+    /* } while (! b.is_valid(hash, target)); */
+
+    /* std::cout << "\nFinal hash: " << hash; */
+
+    /* return 0; */
 }

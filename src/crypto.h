@@ -5,12 +5,24 @@
 #include <openssl/sha.h>
 #include <iomanip>
 #include <sstream>
+#include <fstream>
 
 #include "common.h"
 #include "uint256_t.h"
 
 namespace crypto
 {
+
+static
+void getRandom(unsigned char *dest, size_t nBytes)
+{
+    std::ifstream urandom("/dev/urandom", std::ios::binary);
+
+    // TODO: error handling
+    urandom.read(reinterpret_cast<char*>(dest), nBytes);
+
+    urandom.close();
+}
 
 template<typename T>
 static
@@ -52,6 +64,27 @@ std::string hash256(const std::string &input)
         ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(hash[i]);
     }
     return ss.str();
+}
+
+template<typename T>
+static
+std::string decimalToBinaryString(T num, size_t nBytes)
+{
+    std::string binary = "";
+
+    bool leading = true;
+    for (int i = (nBytes * 8) - 1; i >= 0; --i)
+    {
+        unsigned char bit = num & (1 << i);
+
+        if (leading && ! bit)
+            continue;
+        else if (bit)
+            leading = false;
+
+        binary += bit ? '1' : '0';
+    }
+    return binary;
 }
 
 

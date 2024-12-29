@@ -20,6 +20,8 @@ private:
     uint256_t privateKey;
     CompressedPubKey publicKey;
 
+    int64_t balance;
+
 public:
 
     Wallet();
@@ -27,6 +29,8 @@ public:
 
     void createPrivateKey();
     void derivePublicKey();
+
+    void send(int64_t amount, CompressedPubKey payeePubKey);
 
     const unsigned char *getPublicKey() const;
 };
