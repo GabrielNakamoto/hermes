@@ -36,12 +36,85 @@
  *                      with the private key of the intended payee
  *
  *
+ * Sender verifies the input signatures
+ * Payee can verify the output signatures
+ *
+ * Sender signs outputs and verifies inputs
+ *
+ *
+ * Example:
+ *
+ *      Bob sending coins to Alice
+ *
+ *
+ *
+ *
+ *  Script sig basically just provides a signature (input)
+ *
+ *  Public key script basically just requires a signature
+ *  matching a public key to unlcok it (output)
+ *
+ *  ECDSA Signing:
+ *
+ *      Inputs:
+ *
+ *          message
+ *          private key
+ *
+ *      Output:
+ *
+ *          signature
+ *
+ *  ECDSA Verify Signature:
+ *
+ *      Inputs:
+ *
+ *          signed message
+ *          signature
+ *          public key
+ *
+ *      Output:
+ *
+ *          valid (boolean)
+ *
+ *
  *  Verification types:
  *
- *      P2PK
+ *  *   scriptPubKey is the lock (for the person sending to
+ *      put on the output)
  *
- *      P2PKH
+ *      scriptSig is for the person creating a new transaction
+ *      to put on an input (unlock it)
+ *
+ *
+ *      P2PK (Pay to public key)
+ *
+ *
+ *
+ *      P2PKH (Pay to public key hash)
  */
+
+
+//
+// store byte information in unsigned chars,
+// convert to integers when comparisons are
+// needed?
+//
+
+
+class Transaction;
+
+template<typename Stream>
+void SerializeTransaction(const Transaction &tx, Stream &s)
+{
+
+}
+
+template<typename Stream>
+void DeSerializeTransaction(const Transaction &tx, Stream &s)
+{
+
+}
 
 class Transaction
 {
@@ -66,17 +139,30 @@ public:
 
     struct Input
     {
-
-
         Outpoint outpoint;
+        /**
+         *
+         * Verid options:
+         *
+         * 0x1 = P2PK
+         * 0x2 = P2PKH
+         *
+         */
         unsigned char verId;
+        /*
+         * show that you own the private key
+         * corresponmding to the public key contained
+         * in the output
+         *
+        */
+        uint256_t signature;
     };
 
     struct Output
     {
         // in satoshis
         int64_t amount;
-
+        uint256_t publicKey;
     };
 
 private:
@@ -88,6 +174,10 @@ private:
     std::vector<Output> outputs;
 
 public:
+
+    Transaction();
+    ~Transaction();
+
 
 };
 

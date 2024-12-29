@@ -20,9 +20,6 @@ void Wallet::createPrivateKey()
 {
     secp256k1_context* ctx = secp256k1_context_create(SECP256K1_CONTEXT_NONE);
 
-    // put this somewhere else
-    /* const uint256_t maxValue = crypto::hexStringToInteger<uint256_t>("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364140"); */
-
     uint256_t randomValue = uint256_max;
 
     while (! secp256k1_ec_seckey_verify(ctx, reinterpret_cast<const unsigned char *>(&randomValue)))
@@ -59,8 +56,9 @@ void Wallet::derivePublicKey()
 void Wallet::send(int64_t amount, CompressedPubKey payeePubKey)
 {
     // exception
-    if (amount > balance)
+    if (amount > balance){
         return;
+    }
 
     //
 
