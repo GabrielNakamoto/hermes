@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
+
 #include "common.h"
 
 
@@ -180,5 +182,7 @@ public:
 
 
 };
+
+typedef std::shared_ptr<const Transaction> TransactionRef;
 
 #endif

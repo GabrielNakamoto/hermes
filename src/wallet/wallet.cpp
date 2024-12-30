@@ -5,6 +5,8 @@
 
 #include <secp256k1.h>
 
+namespace wallet
+{
 
 Wallet::Wallet()
 {
@@ -50,8 +52,32 @@ void Wallet::derivePublicKey()
     size_t targetLen = sizeof(compressedPubkey);
     ret = secp256k1_ec_pubkey_serialize(ctx, compressedPubkey, &targetLen, &pubkey, SECP256K1_EC_COMPRESSED);
 
+    publicKey.prefix = compressedPubkey[0];
+    memcpy(&publicKey.xCoord, compressedPubkey + 1, 32);
+
     secp256k1_context_destroy(ctx);
 }
+
+//
+// Send function:
+//
+//      if we have enough balance
+//
+//      create unsigned transaction
+//
+//          iterates through all outputs that
+//          reside at this adress
+//
+//          save them as inputs until >= amount
+//
+//      create outputs (miner fee, reroute to self, destination)
+//
+//      sign transaction
+//
+//      transmit / broadcast transaction
+//
+//
+//
 
 void Wallet::send(int64_t amount, CompressedPubKey payeePubKey)
 {
@@ -60,23 +86,19 @@ void Wallet::send(int64_t amount, CompressedPubKey payeePubKey)
         return;
     }
 
+    int64_t coins;
+
+
+    // how do I know that this transaction
+    // was sent to me?
     //
+    // do I just verify it right away
+    /* for (const auto txRef : watchedTx) */
+    /* { */
+
+    /* } */
 
 }
 
 
-/* std::string Wallet::getPublicKey() const */
-/* { */
-/*     unsigned char buffer[33]; */
-
-/*     buffer[0] = publicKey.prefix; */
-
-/*     for (int i = 32 - 1; i >= 0; --i) */
-/*     { */
-/*         buffer[i] = static_cast<unsigned char>((publicKey.xCoord >> (i * 8)) & 0xFF); */
-/*     } */
-
-/*     std::string bufferString(&buffer[0]); */
-
-/*     return bufferString; */
-/* } */
+}

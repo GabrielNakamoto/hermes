@@ -10,7 +10,7 @@
 
 int main(){
 
-    Wallet w;
+    wallet::Wallet w;
     w.createPrivateKey();
     w.derivePublicKey();
 

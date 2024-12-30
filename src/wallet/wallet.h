@@ -2,8 +2,14 @@
 #define WALLET_H
 
 #include <iostream>
+#include <unordered_map>
+
+#include <primitives/transaction.h>
 #include "common.h"
 #include "crypto.h"
+
+namespace wallet
+{
 
 class Wallet
 {
@@ -22,6 +28,9 @@ private:
 
     int64_t balance;
 
+    // dont work for some reaoson
+    /* std::unordered_map<uint256_t, TransactionRef> watchedTx; */
+
 public:
 
     Wallet();
@@ -31,8 +40,8 @@ public:
     void derivePublicKey();
 
     void send(int64_t amount, CompressedPubKey payeePubKey);
-
-    const unsigned char *getPublicKey() const;
 };
+
+}
 
 #endif
