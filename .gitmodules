@@ -1,6 +1,6 @@
 [submodule "vendor/uint256_t"]
 	path = vendor/uint256_t
-	url = https://github.com/calccrypto/uint256_t
+	url = https://github.com/GabrielNakamoto/uint256_t
 [submodule "vendor/secp256k1"]
 	path = vendor/secp256k1
 	url = https://github.com/bitcoin-core/secp256k1
